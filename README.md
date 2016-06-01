@@ -14,3 +14,8 @@ Yleisiä linkkejä:
 * [Login](http://nroos.users.cs.helsinki.fi/tsoha/login)
 * [Category](http://nroos.users.cs.helsinki.fi/tsoha/categories)
 * [thread_show](http://nroos.users.cs.helsinki.fi/tsoha/thread/1)
+
+
+## Puuttuvat
+
+Tällä hetkellä kaikki tietokantapuolen hommat puuttuvat, tulevat viikon 3 palautukseen
