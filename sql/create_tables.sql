@@ -10,7 +10,6 @@ CREATE TABLE Category (
     name varchar(120) NOT NULL,
     Usr_id INTEGER REFERENCES Usr(id), 
     added DATE,
-    content varchar(1000)
 );
 
 CREATE TABLE Topic (
