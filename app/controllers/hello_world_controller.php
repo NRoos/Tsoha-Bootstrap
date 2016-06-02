@@ -4,7 +4,8 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-          echo 'Tämä on etusivu!';
+        //
+        View::make('main.html');
     }
 
     public static function sandbox(){
@@ -13,14 +14,14 @@
     }
     
     public static function login() {
-        View::make('login.html');
+        View::make('suunnitelmat/login.html');
     }
 
     public static function categories() {
-        View::make('category.html'); 
+        View::make('suunnitelmat/category.html'); 
     }
     
     public static function thread() {
-        View::make('thread_show.htnml');
+        View::make('suunnitelmat/thread_show.html');
     }
   }

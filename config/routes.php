@@ -15,3 +15,7 @@
   $routes->get('/thread/1', function() {
     HelloWorldController::thread();
   });
+
+  $routes->get('/login', function() {
+      HelloWorldController::login();
+  });
