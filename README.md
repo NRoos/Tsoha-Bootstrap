@@ -15,7 +15,11 @@ Yleisiä linkkejä:
 * [Category](http://nroos.users.cs.helsinki.fi/tsoha/categories)
 * [thread_show](http://nroos.users.cs.helsinki.fi/tsoha/thread/1)
 
+## Viikon 3 hommat
+
+* [Users index](http://nroos.users.cs.helsinki.fi/tsoha/users)
+* [new user](http://nroos.users.cs.helsinki.fi/tsoha/users/new)
+* [specific user](http://nroos.users.cs.helsinki.fi/tsoha/users/1)
 
 ## Puuttuvat
-
-Tällä hetkellä kaikki tietokantapuolen hommat puuttuvat, tulevat viikon 3 palautukseen
+Users luokka on nyt käytännössä vain kuin mikä tahansa tietoluokka, asia korjaantuu ensi viikkoon mennessä (nimen uniikkius) ja kunhan saan toteutettua sen ainoan infon mitä siellä pitäisi näkyä (nähdyt topicit), muuten käsittääkseni kaikki viikon 3 hommat tehty
