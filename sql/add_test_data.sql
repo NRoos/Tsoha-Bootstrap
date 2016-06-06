@@ -1,9 +1,9 @@
 -- USR Testidata
 INSERT INTO Usr (name, password) VALUES ('Nico', 'Roos');
-
+INSERT INTO Usr (name, password) VALUES ('Matti', 'Känninen');
 
 -- Category testidata
-INSERT INTO Category (name, Usr_id, added, content) VALUES ('TestiCategory', 1, NOW(), 'Purjopore Mökkimakkara');
+INSERT INTO Category (name, Usr_id, added) VALUES ('TestiCategory', 1, NOW());
 
 
 -- Topic testidata

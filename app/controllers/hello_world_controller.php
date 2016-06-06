@@ -10,7 +10,13 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-        View::make('main.html');
+
+        $nico = Usr::find(1);
+        $users = Usr::all();
+
+        Kint::dump($users);
+        Kint::dump($nico);
+        
     }
     
     public static function login() {

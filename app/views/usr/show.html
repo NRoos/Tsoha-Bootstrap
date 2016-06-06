@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> {{usr.name}} </h1> 
+{{usr.id}}
+<h2> Seen posts: </h2>
+<table class="table table-condensed">
+    {% for post in seen %}
+        <tr>
+            <td> {{topic.name}} </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

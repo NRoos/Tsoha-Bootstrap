@@ -9,7 +9,7 @@ CREATE TABLE Category (
     id SERIAL PRIMARY KEY,
     name varchar(120) NOT NULL,
     Usr_id INTEGER REFERENCES Usr(id), 
-    added DATE,
+    added DATE
 );
 
 CREATE TABLE Topic (
