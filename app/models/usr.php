@@ -4,7 +4,7 @@
 
         public function __construct($attributes){
             parent::__construct($attributes);
-            $this->validators = array('validateStringLength', 'validateNotEmpty');
+            $this->validators = array('validateNameLength', 'validateNotEmpty');
         }
 
         public function save() {
@@ -17,7 +17,14 @@
             $this->id = $row['id'];
         }
 
-
+        public function validateNameLength() {
+            $errors = array();
+            if($this->validateStringLength($this->name, 3) === TRUE) {
+               array_push($errors, "Name must be atleast 3 characters");   
+            }
+            return $errors;
+            
+        }
         public static function all() {
             $query = DB::connection()->prepare('SELECT * FROM Usr');
 

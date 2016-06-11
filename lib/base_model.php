@@ -16,13 +16,12 @@
     }
 
     public function validateStringLength($string, $length) {
-        $errors = array();
 
         if(strlen($string) < $length) {
-            array_push($errors, "Too short");
+            return TRUE;
         }
 
-        return $errors;
+        return FALSE;
     }
 
     public function validateNotEmpty($string) {
