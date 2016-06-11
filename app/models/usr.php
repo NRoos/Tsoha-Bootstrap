@@ -4,7 +4,7 @@
 
         public function __construct($attributes){
             parent::__construct($attributes);
-            $this->validators = array('validateNameLength', 'validateNotEmpty');
+            $this->validators = array('validateNameLength', 'validateNotEmpty', 'validateUnique');
         }
 
         public function save() {
@@ -22,9 +22,17 @@
             if($this->validateStringLength($this->name, 3) === TRUE) {
                array_push($errors, "Name must be atleast 3 characters");   
             }
-            return $errors;
-            
+            return $errors; 
         }
+
+        public function validateUnique() {
+            $errors = array();
+            if($this->findName($this->name) > -1) {
+                array_push($errors, "Name is taken");
+            }
+            return $errors;
+        }
+
         public static function all() {
             $query = DB::connection()->prepare('SELECT * FROM Usr');
 
@@ -62,7 +70,7 @@
             return null;
         }
 
-        public static function find_name($name) {
+        public static function findName($name) {
             $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name');
             $query->execute(array('name' => $name));
             $row = $query->fetch();
