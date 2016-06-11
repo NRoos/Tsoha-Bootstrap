@@ -22,11 +22,16 @@
                 'name' => $params['name'],
                 'password' => $params['password']
             ));
-
-
-            $usr->save();
-
-            Redirect::to('/users/' . $usr->id, array('message' => 'Account creation succesfull'));
-
+            $errors = array();
+            $errors = $usr->errors(); 
+            
+            if(count($errors) > 0) {
+                foreach($errors as $error) {
+                    echo $error;
+                }
+            } else {
+                $usr->save();
+                Redirect::to('/users/' . $usr->id, array('message' => 'Account creation succesfull'));
+            }
         }       
     }

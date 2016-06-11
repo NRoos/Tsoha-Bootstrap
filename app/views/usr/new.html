@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1> Register a new Account: </h1>
+{{errors}}
+
+<h1> Register a new Account </h1>
 
 <form method="post" action="{{base_path}}/usr">
     <div class="form-group">

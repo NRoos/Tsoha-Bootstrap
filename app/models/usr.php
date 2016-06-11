@@ -4,6 +4,7 @@
 
         public function __construct($attributes){
             parent::__construct($attributes);
+            $this->validators = array('validateStringLength', 'validateNotEmpty');
         }
 
         public function save() {
@@ -15,6 +16,7 @@
 
             $this->id = $row['id'];
         }
+
 
         public static function all() {
             $query = DB::connection()->prepare('SELECT * FROM Usr');
@@ -52,4 +54,16 @@
             }
             return null;
         }
+
+        public static function find_name($name) {
+            $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name');
+            $query->execute(array('name' => $name));
+            $row = $query->fetch();
+
+            if($row) {
+                return $row['id'];
+            }
+            return -1;
+        }
     } 
+

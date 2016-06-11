@@ -15,12 +15,33 @@
       }
     }
 
+    public function validateStringLength($string, $length) {
+        $errors = array();
+
+        if(strlen($string) < $length) {
+            array_push($errors, "Too short");
+        }
+
+        return $errors;
+    }
+
+    public function validateNotEmpty($string) {
+        $errors = array();
+        if($string == '' || $string == NULL){
+            array_push($errors, "Can't be empty");
+        }
+
+        return $errors;
+    }
+
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
 
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+          $valArr = array();
+          $valArr = $this->{$validator}($this->name, 3);
+          $errors = array_merge($errors, $valArr);
       }
 
       return $errors;
