@@ -20,17 +20,21 @@
         if(strlen($string) < $length) {
             return TRUE;
         }
-
         return FALSE;
     }
 
     public function validateNotEmpty($string) {
-        $errors = array();
         if($string == '' || $string == NULL){
-            array_push($errors, "Can't be empty");
+            return TRUE;
         }
+        return FALSE;
+    }
 
-        return $errors;
+    public function validateAlphanumeric($string) {
+        if(!preg_match('/^[A-Za-z0-9]*$/', $string)) {
+            return TRUE;
+        }
+        return FALSE;
     }
 
     public function errors(){

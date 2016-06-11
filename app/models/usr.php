@@ -4,7 +4,7 @@
 
         public function __construct($attributes){
             parent::__construct($attributes);
-            $this->validators = array('validateNameLength', 'validateNotEmpty', 'validateUnique');
+            $this->validators = array('validateNameLength', 'validatePassword');
         }
 
         public function save() {
@@ -20,9 +20,24 @@
         public function validateNameLength() {
             $errors = array();
             if($this->validateStringLength($this->name, 3) === TRUE) {
-               array_push($errors, "Name must be atleast 3 characters");   
+                array_push($errors, "Name must be atleast 3 characters");   
             }
             return $errors; 
+        }
+
+        public function validatePassword() {
+            $errors = array();
+            if($this->validateStringLength($this->password, 5) === TRUE) {
+                array_push($errors, "Password must be atleast 5 characters");
+            }
+            if($this->validateNotEmpty($this->password) === TRUE) {
+                array_push($errors, "Password must not be empty");
+            }
+            if($this->validateAlphanumeric($this->password) === TRUE) {
+                array_push($errors, "Password must only contain A-Ö and numbers");
+            }
+
+            return $errors;
         }
 
         public function validateUnique() {
