@@ -38,12 +38,13 @@
             $usr = new Usr($attributes);
             $errors = $usr->errors();
 
-            if(count($errors) > 0) {
-                View::make('usr/edit.html', array('errors' => $errors, 'usr' => $attributes));
+            //Unique check will always throw an error
+            if(count($errors) > 1) {
+                echo 'you dun fukcked up';
             } else {
                 $usr->update();
+                Redirect::to('/users/' . $id, array('message' => 'Updated'));
             }
-            Redirect::to('/usr/' . $id, array('message' => 'Updated'));
         }
 
         public static function store() {
