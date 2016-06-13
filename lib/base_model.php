@@ -15,7 +15,6 @@
       }
     }
 
-    //Helper, not a full validator
     public function validateStringLength($string, $length) {
         if(strlen($string) < $length) {
             return TRUE;
@@ -49,5 +48,6 @@
 
       return $errors;
     }
+
 
   }

@@ -12,4 +12,8 @@
     {% endfor %}
 </table>
 
+<form method="post" action="{{base_path}}/users/{{usr.id}}/destroy" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+
 {% endblock %}

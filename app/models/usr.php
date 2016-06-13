@@ -4,7 +4,7 @@
 
         public function __construct($attributes){
             parent::__construct($attributes);
-            $this->validators = array('validateNameLength', 'validatePassword');
+            $this->validators = array('validateName', 'validatePassword');
         }
 
         public function save() {
@@ -17,10 +17,28 @@
             $this->id = $row['id'];
         }
 
-        public function validateNameLength() {
+        public function destroy() {
+            $query = DB::connection()->prepare('DELETE FROM Usr WHERE id = ' . $this->id);
+            $query->execute();
+        }
+
+        public function update() {
+            $query = DB::connection()->prepare('UPDATE Usr SET password = \'' . $this->password . '\' WHERE id = ' . $this->id);
+
+            $query->execute();
+        }
+
+        public function validateName() {
             $errors = array();
             if($this->validateStringLength($this->name, 3) === TRUE) {
                 array_push($errors, "Name must be atleast 3 characters");   
+            }
+            if($this->validateAlphanumeric($this->name, 3) === TRUE) {
+                array_push($errors, "Name must contain only A-Ö and 0-9");
+            }
+
+            if($this->validateUnique($this->name) === TRUE) {
+                array_push($errors, "Name is already in use");
             }
             return $errors; 
         }
@@ -43,9 +61,9 @@
         public function validateUnique() {
             $errors = array();
             if($this->findName($this->name) > -1) {
-                array_push($errors, "Name is taken");
+                return TRUE;
             }
-            return $errors;
+            return FALSE;
         }
 
         public static function all() {
@@ -93,7 +111,7 @@
             if($row) {
                 return $row['id'];
             }
-            return -1;
+            return NULL;
         }
     } 
 

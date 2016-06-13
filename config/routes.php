@@ -35,3 +35,14 @@
       UsrsController::store();
   });
 
+  $routes->get('/users/:id/edit', function($id) {
+      UsrsController::edit($id);
+  });
+
+  $routes->post('/users/:id/edit', function($id) {
+      UsrsController::update($id);
+  });
+
+  $routes->post('/users/:id/destroy', function($id) {
+      UsrsController::destroy($id);
+  });

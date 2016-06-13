@@ -14,6 +14,38 @@
             View::make('usr/show.html', array('usr' => $usr));
         }
 
+        public function edit($id) {
+            $usr = Usr::find($id);
+            View::make('usr/edit.html', array('usr' => $usr));
+        }
+
+        public static function destroy($id) {
+           $usr = new Usr(array('id' => $id)); 
+           $usr->destroy();
+
+           Redirect::to('/users');
+        }
+
+        public static function update($id) {
+            $params = $_POST;
+
+            $attributes = array(
+                'id' => $id,
+                'name' => $params['name'],
+                'password' => $params['password'],
+            );
+
+            $usr = new Usr($attributes);
+            $errors = $usr->errors();
+
+            if(count($errors) > 0) {
+                View::make('usr/edit.html', array('errors' => $errors, 'usr' => $attributes));
+            } else {
+                $usr->update();
+            }
+            Redirect::to('/usr/' . $id, array('message' => 'Updated'));
+        }
+
         public static function store() {
 
             $params = $_POST;
