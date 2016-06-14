@@ -1,9 +1,12 @@
 <?php
-
   class BaseController{
-
     public static function get_user_logged_in(){
-      // Toteuta kirjautuneen käyttäjän haku tähän
+        if(isset($_SESSION['user'])) {
+            $usr_id = $_SESSION['user'];
+            $usr = Usr::find($usr_id);
+            return $usr;
+        }
+
       return null;
     }
 
@@ -11,5 +14,4 @@
       // Toteuta kirjautumisen tarkistus tähän.
       // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
     }
-
   }

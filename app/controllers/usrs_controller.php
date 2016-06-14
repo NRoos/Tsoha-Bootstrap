@@ -9,6 +9,24 @@
             View::make('usr/new.html');
         } 
 
+        public static function login() {
+            View::make('/usr/login.html');
+        }
+
+        public static function handle_login() {
+           $params = $_POST; 
+
+           $usr = Usr::authenticate($params['name'], $params['password']);
+
+           if(!$usr) {
+               View::make('usr/login.html', array('error' => 'Wrong username or password'));
+           } else {
+               $_SESSION['user'] = $usr->id;
+               Redirect::to('/');
+           }
+        }
+
+
         public static function show($id) {
             $usr = Usr::find($id);
             View::make('usr/show.html', array('usr' => $usr));

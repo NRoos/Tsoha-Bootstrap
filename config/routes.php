@@ -17,7 +17,11 @@
   });
 
   $routes->get('/login', function() {
-      HelloWorldController::login();
+      UsrsController::login();
+  });
+
+  $routes->post('/login', function() {
+      UsrsController::handle_login();
   });
 
   $routes->get('/users', function() {

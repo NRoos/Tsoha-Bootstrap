@@ -8,3 +8,11 @@
   max-width: 1200px;
   margin: 0px auto;
 }
+
+#errorheading {
+    color: red;
+}
+
+#successheading {
+    color: green;
+}

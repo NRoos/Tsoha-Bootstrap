@@ -6,6 +6,24 @@
             parent::__construct($attributes);
             $this->validators = array('validateName', 'validatePassword');
         }
+         
+        public static function authenticate($name, $password) {
+            $query = DB::connection()->prepare('SELECT * FROM Usr WHERE name = :name AND password = :password LIMIT 1');
+            $query->execute(array('name' => $name, 'password' => $password));
+            $row = $query->fetch();
+            if($row) {
+                $usr = New Usr(
+                    array(
+                        'id' => $row['id'],
+                        'name' => $row['name'],
+                        'password' => $row['password'],
+                        'admin' => $row['admin']
+                    ));
+                return $usr;
+            } else {
+                return NULL;
+            }
+        }
 
         public function save() {
             $query = DB::connection()->prepare('INSERT INTO Usr (name, password) VALUES (:name, :password) RETURNING id');
