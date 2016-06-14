@@ -12,8 +12,9 @@
     {% endfor %}
 </table>
 
-{{forms.destroy_button("#{base_path}/users/#{usr.id}/destroy")}}
-
-<a href="{{base_path}}/users/{{usr.id}}/edit" class="btn btn-success">Change password</a>
+{% if(user_logged_in.id == usr.id) %}
+    {{forms.destroy_button("#{base_path}/users/#{usr.id}/destroy")}}
+    <a href="{{base_path}}/users/{{usr.id}}/edit" class="btn btn-success">Change password</a>
+{% endif %}
 
 {% endblock %}
