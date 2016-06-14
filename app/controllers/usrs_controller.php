@@ -19,7 +19,7 @@
            $usr = Usr::authenticate($params['name'], $params['password']);
 
            if(!$usr) {
-               View::make('usr/login.html', array('error' => 'Wrong username or password'));
+               View::make('usr/login.html', array('error' => 'Wrong username or password', 'inpname' => $params['name']));
            } else {
                $_SESSION['user'] = $usr->id;
                Redirect::to('/');
