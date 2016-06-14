@@ -77,9 +77,7 @@
             $errors = $usr->errors(); 
             
             if(count($errors) > 0) {
-                foreach($errors as $error) {
-                    echo $error;
-                }
+                Redirect::to('/users/new', array('error' => $errors[0], 'inpname' => $params['name']));
             } else {
                 $usr->save();
                 Redirect::to('/users/' . $usr->id, array('message' => 'Account creation succesfull'));
