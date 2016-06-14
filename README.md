@@ -17,4 +17,4 @@ Yleisiä linkkejä:
 ## Viikon 4 hommat
 
 * [login](http://nroos.users.cs.helsinki.fi/tsoha/login)
-* Sisäänkirjautuminen näkyy siinä että ylhäällä lukee keneksi olet kirjautunut ja salasanan muokkaus ja poistonapit näkyvät vain oikealle käyttäjälle
+* Sisäänkirjautuminen näkyy siinä että ylhäällä lukee keneksi olet kirjautunut ja salasanan muokkaus- ja poistonapit näkyvät vain oikealle käyttäjälle
