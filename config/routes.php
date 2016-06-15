@@ -1,16 +1,13 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    CategoriesController::index(); 
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
 
-  $routes->get('/categories', function() {
-    HelloWorldController::categories();
-  });
 
   $routes->get('/thread/1', function() {
     HelloWorldController::thread();
@@ -22,6 +19,10 @@
 
   $routes->post('/login', function() {
       UsrsController::handle_login();
+  });
+
+  $routes->post('/logout', function() {
+      UsrsController::logout();
   });
 
   $routes->get('/users', function() {
@@ -49,4 +50,8 @@
 
   $routes->post('/users/:id/destroy', function($id) {
       UsrsController::destroy($id);
+  });
+
+  $routes->get('/categories', function() {
+      CategoriesController::index();
   });

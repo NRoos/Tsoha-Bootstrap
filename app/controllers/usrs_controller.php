@@ -26,6 +26,10 @@
            }
         }
 
+        public static function logout() {
+            $_SESSION = NULL;
+            Redirect::to('/', array('success' => 'Succesfully logged out'));
+        }
 
         public static function show($id) {
             $usr = Usr::find($id);

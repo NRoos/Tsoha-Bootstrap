@@ -40,13 +40,16 @@
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}">Etusivu</a></li>
+            <li><a href="{{base_path}}/users">Users</a></li>
+            <li><a href="{{base_path}}/users/new">Register</a></li>
             {% if(user_logged_in) %}
-                <li><a href="{{base_path}}/users/{{user_logged_in.id}}">Logged in as: {{user_logged_in.name}}</a></li>
+                <li><a href="{{base_path}}/users/{{user_logged_in.id}}">{{user_logged_in.name}}</a></li>
+                <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
+                    <button type="submit" class="btn btn-danger"> Logout </button>
+                </form>
             {% else %}
                 <li><a href="{{base_path}}/login"> Login </a></li>
             {% endif %}
-            <li><a href="{{base_path}}/users">Users</a></li>
-            <li><a href="{{base_path}}/users/new">Register</a></li>
           </ul>
         </div>
       </div>
@@ -54,8 +57,8 @@
 
     <div id="main-container">
       <!-- Dynaaminen sisältö tulee tähän -->
-      <h3 id="errorheading"> {{error}} </h3>
-      <h3 id="successheading"> {{success}} </h3>
+      {% if(error) %} <h3 id="errorheading"> {{error}} </h3> {% endif %}
+      {% if(success) %} <h3 id="successheading"> {{success}} </h3> {% endif %}
       {% block content %}{% endblock %}
     </div>
 
