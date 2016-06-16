@@ -8,11 +8,7 @@
     HelloWorldController::sandbox();
   });
 
-
-  $routes->get('/thread/1', function() {
-    HelloWorldController::thread();
-  });
-
+        // LOGIN / LOGOUT
   $routes->get('/login', function() {
       UsrsController::login();
   });
@@ -24,7 +20,7 @@
   $routes->post('/logout', function() {
       UsrsController::logout();
   });
-
+        // USERS START HERE
   $routes->get('/users', function() {
       UsrsController::index();
   });
@@ -52,12 +48,22 @@
       UsrsController::destroy($id);
   });
 
+    // CATEGORIES START HERE
+
   $routes->get('/categories', function() {
       CategoriesController::index();
   });
 
   $routes->get('/categories/new', function() {
       CategoriesController::create();
+  });
+
+  $routes->get('/categories/:id', function($id) {
+      CategoriesController::show($id);
+  });
+
+  $routes->post('/categories/:id/destroy', function($id) {
+      CategoriesController::destroy($id);
   });
 
   $routes->post('/category', function() {

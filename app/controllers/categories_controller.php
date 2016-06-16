@@ -6,11 +6,26 @@
         }
 
         public static function show($id) {
-            View::make('/category/:id/show.html');
+            $category = Category::find($id);
+            View::make('/category/show.html', array('category' => $category));
         }
 
         public static function create() {
             View::make('/category/new.html');
+        }
+
+        public static function destroy($id) {
+
+            $usr = self::get_user_logged_in(); 
+            if($usr->admin === TRUE) {
+                $category = new Category(array(
+                    'id' => $params['id']
+                ));
+                $category->destroy();
+                Redirect::to('/categories', array('success' => 'category deleted'));
+            } else {
+                Redirect::to('/categories', array('You need to be an admin to do that'));
+            }
         }
 
         public static function store() {
@@ -20,7 +35,8 @@
             
             $category = new Category(array(
                 'name' => $params['name'],
-                'user_id' => $currUser->id
+                'usr_id' => $currUser->id,
+                'added' => date("Y-m-d H:i:s") 
             ));
 
             $errors = array();

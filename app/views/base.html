@@ -42,10 +42,11 @@
             <li><a href="{{base_path}}">Etusivu</a></li>
             <li><a href="{{base_path}}/users">Users</a></li>
             <li><a href="{{base_path}}/users/new">Register</a></li>
+            <li class="divider">    </li>
             {% if(user_logged_in) %}
                 <li><a href="{{base_path}}/users/{{user_logged_in.id}}">{{user_logged_in.name}}</a></li>
                 <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
-                    <button type="submit" class="btn btn-danger"> Logout </button>
+                    <button type="submit" class="btn btn-link"> Logout </button>
                 </form>
             {% else %}
                 <li><a href="{{base_path}}/login"> Login </a></li>

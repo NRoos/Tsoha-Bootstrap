@@ -7,13 +7,39 @@
             $this->validators = array();
         }
 
-        public function save() {
-            $query = DB::connection()->prepare('INSERT INTO Category (name) VALUES (:name) RETURNING id');
+        public function find($id) {
+            $query = DB::connection()->prepare('SELECT * FROM Category WHERE id = :id');
 
-            $query->execute(array('name' => $this->name));
+            $query->execute(array('id' => $id));
+
+            $row = $query->fetch();
+
+
+            if($row) {
+                $category = New Category(array(
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'usr_id' => $row['usr_id'],
+                    'added' => $row['added']
+                )); 
+                return $category;
+            }
+            return null;
+        } 
+
+        public function save() {
+            $query = DB::connection()->prepare('INSERT INTO Category (name, usr_id, added) VALUES (:name, :usr_id, :added) RETURNING id');
+
+            $query->execute(array('name' => $this->name, 'usr_id' => $this->usr_id, 'added' => $this->added));
 
             $row = $query->fetch();
 
             $this->id = $row['id'];
+        }
+
+        public function destroy() {
+            $query = DB::connection()->prepare('DELETE FROM Category WHERE name = :name');
+
+            $query->execute();
         }
     }
