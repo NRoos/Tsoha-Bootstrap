@@ -8,17 +8,18 @@
             <tr>
                 <th> Title </th>
                 <th> Threads </th>
-                <th> Most recent </th>
+                <th> Started on </th>
             </tr>
         </thead>
-
+        {% for category in categories %}
         <tbody>
             <tr>
-                <td><a href="#"> Placeholder </a></td>
-                <td> 3 </td>
-                <td> 11.12.2015 </td>
+                <td><a href="{{base_path}}/categories/{{category.id}}">{{category.name}}</a></td>
+                <td> TODO </td>
+                <td> {{category.added}} </td>
             </tr>
         </tbody>
+        {% endfor %}
     </table>
 
     <form class="form-group" type="get" action="{{base_path}}/categories/new">

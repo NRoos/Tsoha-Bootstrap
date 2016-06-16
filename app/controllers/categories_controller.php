@@ -2,7 +2,8 @@
     class CategoriesController extends BaseController {
 
         public static function index() {
-            View::make('/main.html');
+            $categories = Category::all();
+            View::make('/main.html', array('categories' => $categories));
         }
 
         public static function show($id) {

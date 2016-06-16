@@ -29,7 +29,7 @@
 
         public function all() {
             $query = DB::connection()->prepare('SELECT * FROM Category');
-            $query->ececute();
+            $query->execute();
             
             $rows = $query->fetchAll();
             $categories = array();
@@ -42,8 +42,7 @@
                    'usr_id' => $row['usr_id']
                ));
             }
-                return $categories;
-
+            return $categories;
         }
 
         public function save() {
