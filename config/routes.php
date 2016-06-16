@@ -55,3 +55,11 @@
   $routes->get('/categories', function() {
       CategoriesController::index();
   });
+
+  $routes->get('/categories/new', function() {
+      CategoriesController::create();
+  });
+
+  $routes->post('/category', function() {
+      CategoriesController::store();
+  });

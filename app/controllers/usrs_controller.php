@@ -62,10 +62,10 @@
 
             //Unique check will always throw an error
             if(count($errors) > 1) {
-                echo 'you dun fukcked up';
+                Redirect::to('/users/' . $id, array('error' => $errors[0]));
             } else {
                 $usr->update();
-                Redirect::to('/users/' . $id, array('message' => 'Updated'));
+                Redirect::to('/users/' . $id, array('success' => 'Updated'));
             }
         }
 
@@ -84,7 +84,7 @@
                 Redirect::to('/users/new', array('error' => $errors[0], 'inpname' => $params['name']));
             } else {
                 $usr->save();
-                Redirect::to('/users/' . $usr->id, array('message' => 'Account creation succesfull'));
+                Redirect::to('/users/' . $usr->id, array('success' => 'Account creation succesfull'));
             }
         }       
     }
