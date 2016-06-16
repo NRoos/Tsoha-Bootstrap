@@ -56,8 +56,8 @@
         }
 
         public function destroy() {
-            $query = DB::connection()->prepare('DELETE FROM Category WHERE name = :name');
+            $query = DB::connection()->prepare('DELETE FROM Category WHERE id = :id');
 
-            $query->execute();
+            $query->execute(array('id' => $this->id));
         }
     }

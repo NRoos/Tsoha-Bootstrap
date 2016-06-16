@@ -17,10 +17,11 @@
 
         public static function destroy($id) {
 
+
             $usr = self::get_user_logged_in(); 
             if($usr->admin === TRUE) {
                 $category = new Category(array(
-                    'id' => $params['id']
+                    'id' => $id
                 ));
                 $category->destroy();
                 Redirect::to('/categories', array('success' => 'category deleted'));

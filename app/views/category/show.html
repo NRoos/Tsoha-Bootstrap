@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% import "macros/forms.html" as forms %}
 
     <h1> {{category.name}} </h1>
 
@@ -19,5 +19,9 @@
             </tr>
         </tbody>
     </table>
+    
+    {% if(user_logged_in.admin == 1) %}
+        {{forms.destroy_button("#{base_path}/categories/#{category.id}/destroy")}}
+    {% endif %}
 
 {% endblock %}
