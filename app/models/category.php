@@ -27,6 +27,25 @@
             return null;
         } 
 
+        public function all() {
+            $query = DB::connection()->prepare('SELECT * FROM Category');
+            $query->ececute();
+            
+            $rows = $query->fetchAll();
+            $categories = array();
+
+            foreach($rows as $row){
+                $categories[] = new Category(array(
+                   'id' => $row['id'],
+                   'name' => $row['name'],
+                   'added' => $row['added'],
+                   'usr_id' => $row['usr_id']
+               ));
+            }
+                return $categories;
+
+        }
+
         public function save() {
             $query = DB::connection()->prepare('INSERT INTO Category (name, usr_id, added) VALUES (:name, :usr_id, :added) RETURNING id');
 
