@@ -4,7 +4,7 @@
 
         public function __construct($attributes) {
             parent::__construct($attributes);
-            $this->validators = array();
+            $this->validators = array('validateName');
         }
 
         public function find($id) {
@@ -43,6 +43,20 @@
                ));
             }
             return $categories;
+        }
+
+        public function validateName() {
+            $errors = array();
+
+            if($this->validateNotEmpty($this->name) === TRUE) {
+                array_push($errors, 'Name can\'t be empty');
+            }
+            if($this->validateStringLength($this->name, 5) === TRUE) {
+                array_push($errors, 'name must be atleast 5 characters');
+            }
+
+            return $errors;
+
         }
 
         public function save() {

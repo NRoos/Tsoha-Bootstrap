@@ -8,6 +8,9 @@
 
         public static function show($id) {
             $category = Category::find($id);
+
+            self::check_logged_in();
+
             View::make('/category/show.html', array('category' => $category));
         }
 
@@ -42,9 +45,10 @@
             ));
 
             $errors = array();
+            $errors = $category->errors();
 
             if(count($errors) > 0) {
-                Redirect::to('/categories/new', array('error' => 'unsuccsefull'));
+                Redirect::to('/categories/new', array('error' => $errors[0]));
             } else {
                 $category->save();
                 Redirect::to('/', array('success' => 'Category created succesfully'));
