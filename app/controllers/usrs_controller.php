@@ -54,7 +54,7 @@
             $attributes = array(
                 'id' => $id,
                 'name' => $params['name'],
-                'password' => $params['password'],
+                'password' => $params['password']
             );
 
             $usr = new Usr($attributes);
@@ -62,7 +62,7 @@
 
             //Unique check will always throw an error
             if(count($errors) > 1) {
-                Redirect::to('/users/' . $id, array('error' => $errors[0]));
+                Redirect::to('/users/' . $id, array('error' => $errors[1]));
             } else {
                 $usr->update();
                 Redirect::to('/users/' . $id, array('success' => 'Updated'));
@@ -70,7 +70,6 @@
         }
 
         public static function store() {
-
             $params = $_POST;
 
             $usr = new Usr(array(
@@ -86,5 +85,5 @@
                 $usr->save();
                 Redirect::to('/users/' . $usr->id, array('success' => 'Account creation succesfull'));
             }
-        }       
+        } 
     }

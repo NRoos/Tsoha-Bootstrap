@@ -59,6 +59,13 @@
 
         }
 
+        public function update() {
+            $query = DB::connection()->prepare('UPDATE Category SET NAME = \'' . $this->name . '\' where id = ' . $this->id);  
+
+            $query->execute();
+
+        }
+
         public function save() {
             $query = DB::connection()->prepare('INSERT INTO Category (name, usr_id, added) VALUES (:name, :usr_id, :added) RETURNING id');
 

@@ -18,9 +18,31 @@
             View::make('/category/new.html');
         }
 
+        public static function update($id) {
+            $params = $_POST; 
+
+            $attributes = array(
+                'id' => $params['id'],
+                'name' => $params['name']
+                'usr_id' => $params['usr_id'],
+                'added' => $params['added']
+            );
+
+            $category = new Category($attributes);
+
+            $errors = array();
+            $errors = $category->errors();
+
+            if(count($errors) > 0) {
+                Redirect::to('/categories/new', array('error' => $errors[0], 'inpname' => $category->name));
+            else {
+                $category->update();
+                Redirect::to('/categories/' . $category->id, array('success' => 'Succesfully updated')); 
+            }
+            }
+        }
+
         public static function destroy($id) {
-
-
             $usr = self::get_user_logged_in(); 
             if($usr->admin === TRUE) {
                 $category = new Category(array(
