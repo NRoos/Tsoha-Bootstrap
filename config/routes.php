@@ -69,3 +69,11 @@
   $routes->post('/category', function() {
       CategoriesController::store();
   });
+
+  $routes->get('/categories/:id/edit', function($id) {
+      CategoriesController::edit($id);
+  });
+
+  $routes->post('/categories/:id/edit', function($id) {
+      CategoriesController::update($id);
+  });

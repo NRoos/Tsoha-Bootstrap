@@ -14,6 +14,12 @@
             View::make('/category/show.html', array('category' => $category));
         }
 
+        public static function edit($id) {
+            $category = Category::find($id);
+
+            View::make('/category/edit.html', array('category' => $category));
+        }
+
         public static function create() {
             View::make('/category/new.html');
         }
@@ -22,10 +28,8 @@
             $params = $_POST; 
 
             $attributes = array(
-                'id' => $params['id'],
+                'id' => $id,
                 'name' => $params['name']
-                'usr_id' => $params['usr_id'],
-                'added' => $params['added']
             );
 
             $category = new Category($attributes);
@@ -35,10 +39,10 @@
 
             if(count($errors) > 0) {
                 Redirect::to('/categories/new', array('error' => $errors[0], 'inpname' => $category->name));
-            else {
+            } else {
                 $category->update();
                 Redirect::to('/categories/' . $category->id, array('success' => 'Succesfully updated')); 
-            }
+            
             }
         }
 

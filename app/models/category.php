@@ -77,6 +77,10 @@
         }
 
         public function destroy() {
+            $query = DB::connection()->prepare('UPDATE Category SET usr_id = 1 WHERE usr_id = :id');
+
+            $query->execute(array('id' => $this->id));
+
             $query = DB::connection()->prepare('DELETE FROM Category WHERE id = :id');
 
             $query->execute(array('id' => $this->id));
