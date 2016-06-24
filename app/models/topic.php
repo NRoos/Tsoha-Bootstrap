@@ -32,18 +32,20 @@
             $query->execute(array('id' => $catId));
 
             $rows = $query->fetchAll();
+            $topics = array();
 
-            if($rows) {
-                $topics = new Topic(array(
-                    'id' => $row['id'],
-                    'name' => $row['name'],
-                    'content' => $row['content'],
-                    'usr_id' => $row['usr_id'],
-                    'category_id' => $row['category_id'],
-                    'added' => $row['added']
-                ));
+            foreach($rows as $row) {
+                    $topics[] = new Topic(array(
+                        'id' => $row['id'],
+                        'name' => $row['name'],
+                        'content' => $row['content'],
+                        'usr_id' => $row['usr_id'],
+                        'category_id' => $row['category_id'],
+                        'added' => $row['added']
+                    ));
                 return $topics;
             }
+            
             return NULL;
         }
     }

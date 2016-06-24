@@ -77,3 +77,7 @@
   $routes->post('/categories/:id/edit', function($id) {
       CategoriesController::update($id);
   });
+
+  $routes->get('/topics/:id', function($id) {
+      TopicsController::show($id);
+  });
