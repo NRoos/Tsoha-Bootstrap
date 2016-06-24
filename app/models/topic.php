@@ -1,5 +1,5 @@
 <?php
-    Class Topic extends BaseModel {
+    class Topic extends BaseModel {
         public $id, $name, $content, $category_id, $usr_id, $added;
 
         public function __construct($attributes) {

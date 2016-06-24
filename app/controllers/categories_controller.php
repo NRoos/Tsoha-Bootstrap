@@ -8,7 +8,7 @@
 
         public static function show($id) {
             $category = Category::find($id);
-            $topics = Topic::inCategory($id);
+            $topics   = Topic::inCategory($id);
             self::check_logged_in();
             View::make('/category/show.html', array('category' => $category, 'topics' => $topics));
         }

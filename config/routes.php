@@ -78,6 +78,11 @@
       CategoriesController::update($id);
   });
 
+    //TOPICS
+
   $routes->get('/topics/:id', function($id) {
       TopicsController::show($id);
   });
+
+
+  //REPLIES

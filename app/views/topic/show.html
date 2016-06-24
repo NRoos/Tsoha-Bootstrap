@@ -5,15 +5,17 @@
 
 <p> {{topic.content}}</p>
 
+
 <table class="table table-bordered">
+{% for reply in replies %}
     <thead>
-        <th> TODO COMMENTER HERE </th>
+        <th> by: <a href="{{base_path}}/users/{{reply.usr_id}}">{{reply.usr_id}}</a></th>
     </thead>
     <tbody>
-        <p> COMMENT CONTENT HERE </p>
+    <tr><td> {{reply.content}} </td> </tr>
     </tbody>
+{% endfor %}
 </table>
-
 
 
 {% endblock %}
