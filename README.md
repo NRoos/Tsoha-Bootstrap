@@ -9,12 +9,9 @@ Yleisiä linkkejä:
 
 * [Keskustelufoorumi](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Keskustelufoorumi.html) 
 
-## Suunnitelmat
+## Viikon 5 hommat
 
-* [Category](http://nroos.users.cs.helsinki.fi/tsoha/categories)
-* [thread_show](http://nroos.users.cs.helsinki.fi/tsoha/thread/1)
-
-## Viikon 4 hommat
-
-* [login](http://nroos.users.cs.helsinki.fi/tsoha/login)  username: demo, pass: demo1
-* Sisäänkirjautuminen näkyy siinä että ylhäällä lukee keneksi olet kirjautunut ja salasanan muokkaus- ja poistonapit näkyvät vain oikealle käyttäjälle
+* logout löytyy sisäänkirjautuneelta käyttäjältä navigaatiopalkista (username: demo, pass: demo1)
+* Dokumentaatiossa otettu huomioon vasta valmis toiminnallisuus
+* Kirjautumisen varmennus näkyy lähinnä siinä että asioita ei voi poistaa ellei ole kirjautunut sisään
+* CRUD on toteutettu kokonaisuudessaan sekä USR luokalle että Categories luokalle
