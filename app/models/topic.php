@@ -4,7 +4,7 @@
 
         public function __construct($attributes) {
             parent::__construct($attributes);
-            $this->validators = array();
+            $this->validators = array('validateNotEmpty');
         }
 
         public static function find($id) {
@@ -43,9 +43,8 @@
                         'category_id' => $row['category_id'],
                         'added' => $row['added']
                     ));
-                return $topics;
             }
             
-            return NULL;
+            return $topics;
         }
     }

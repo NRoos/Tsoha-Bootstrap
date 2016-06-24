@@ -7,13 +7,14 @@
         <thead>
             <th> Title </th>
             <th> Poster </th>
+            <th> Seen </th>
         </thead> 
-        <!---- repeat for each post ---->
         <tbody>
         {% for topic in topics %}
             <tr>
                 <td><a href="{{base_path}}/topics/{{topic.id}}"> {{topic.name}} </a></td>
                 <td><a href="{{base_path}}/users/{{topic.usr_id}}"> {{topic.usr_id}}</a></td>
+                <td> TODO </td>
             </tr>
         {% endfor %}
         </tbody>

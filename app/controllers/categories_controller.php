@@ -15,11 +15,13 @@
 
         public static function edit($id) {
             $category = Category::find($id);
+            self::check_logged_in();
 
             View::make('/category/edit.html', array('category' => $category));
         }
 
         public static function create() {
+            self::check_logged_in();
             View::make('/category/new.html');
         }
 
