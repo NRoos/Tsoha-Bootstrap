@@ -7,7 +7,7 @@
 <table class="table table-condensed">
     {% for post in seen %}
         <tr>
-            <td> {{topic.name}} </td>
+            <td><a href="{{base_path}}/topics/{{post.topic_id}}">{{post.topic_id}}</a></td>
         </tr>
     {% endfor %}
 </table>

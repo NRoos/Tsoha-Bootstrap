@@ -31,5 +31,5 @@ CREATE TABLE Reply (
 
 CREATE TABLE UsrSeenTopic (
     Usr_id INTEGER REFERENCES Usr(id),
-    Reply_id INTEGER REFERENCES Topic(id)
+    Topic_id INTEGER REFERENCES Topic(id)
 );

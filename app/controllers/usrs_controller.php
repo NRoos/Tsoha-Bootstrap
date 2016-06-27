@@ -33,7 +33,8 @@
 
         public static function show($id) {
             $usr = Usr::find($id);
-            View::make('usr/show.html', array('usr' => $usr));
+            $seen = UsrSeenTopic::allForUsr($id);
+            View::make('usr/show.html', array('usr' => $usr, 'seen' => $seen));
         }
 
         public function edit($id) {
