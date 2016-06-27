@@ -2,6 +2,7 @@
 class TopicsController extends BaseController {
     
     public static function show($id) {
+        self::check_logged_in();
         $topic = Topic::find($id); 
         $replies = Reply::inTopic($id);
         $seen = UsrSeenTopic::find(self::get_user_logged_in(), $topic);
