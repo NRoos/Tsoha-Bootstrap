@@ -4,7 +4,7 @@
 
         public function __construct($attributes) {
             parent::__construct($attributes); 
-            $this->validators = array();
+            $this->validators = array('validateContent');
         }
 
         public static function find($id) {
@@ -25,7 +25,18 @@
             }
             return NULL;
         } 
-        
+
+        public function validateContent() {
+            $errors = array();
+
+            if($this->validateNotEmpty($this->content) === TRUE) {
+                array_push($errors, "Reply must not be empty");
+            }
+
+            return $errors;
+        }
+         
+
         public static function inTopic($topId) {
             $query = DB::connection()->prepare('SELECT * FROM reply WHERE topic_id = :topId');
             $query->execute(array('topId'=>$topId));

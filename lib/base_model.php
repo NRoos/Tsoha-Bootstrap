@@ -42,7 +42,7 @@
 
       foreach($this->validators as $validator){
           $valArr = array();
-          $valArr = $this->{$validator}($this->name, 3);
+          $valArr = $this->{$validator}();
           $errors = array_merge($errors, $valArr);
       }
 

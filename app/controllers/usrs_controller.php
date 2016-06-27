@@ -81,7 +81,6 @@
             ));
             $errors = array();
             $errors = $usr->errors(); 
-            
             if(count($errors) > 0) {
                 Redirect::to('/users/new', array('error' => $errors[0], 'inpname' => $params['name']));
             } else {
