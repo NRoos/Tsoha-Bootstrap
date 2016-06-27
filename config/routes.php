@@ -80,9 +80,16 @@
 
     //TOPICS
 
+  $routes->get('/topics/create/:cat', function($cat) {
+      TopicsController::create($cat);
+  });
+  
   $routes->get('/topics/:id', function($id) {
       TopicsController::show($id);
   });
 
+  $routes->post('/topic', function() {
+      TopicsController::store();
+  });
 
   //REPLIES

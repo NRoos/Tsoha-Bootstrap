@@ -4,7 +4,7 @@
 
         public function __construct($attributes) {
             parent::__construct($attributes);
-            $this->validators = array('validateNotEmpty');
+            $this->validators = array('validateName');
         }
 
         public static function find($id) {
@@ -27,6 +27,14 @@
             return NULL;
         }
 
+        public function validateName() {
+            $errors = array(); 
+            if($this->validateStringLength($this->name, 10)) {
+                array_push($errors, "Name must be more than 10 characters");
+            }
+            return $errors;
+        }
+
         public static function inCategory($catId) {
             $query = DB::connection()->prepare('SELECT * FROM Topic WHERE category_id = :id');
             $query->execute(array('id' => $catId));
@@ -46,5 +54,14 @@
             }
             
             return $topics;
+        }
+
+        public function save() {
+           $query = DB::connection()->prepare('INSERT INTO topic (name, content, usr_id, category_id, added) VALUES (:name, :content, :usr_id, :category_id, :added) RETURNING id');
+           $query->execute(array('name'=> $this->name, 'usr_id' => $this->usr_id, 'category_id' => $this->category_id, 'added' => $this->added, 'content' => $this->content));
+
+           $row = $query->fetch(); 
+
+           $this->id = $row['id'];
         }
     }
