@@ -44,4 +44,13 @@
             }
             return $replies;
         }
+
+        public function save() {
+            $query = DB::connection()->prepare('INSERT INTO reply (usr_id, topic_id, added, content) VALUES (:usr_id, :topic_id, :added, :content) RETURNING id');
+            $query->execute(array('usr_id' => $this->usr_id, 'topic_id' => $this->topic_id, 'added'=>$this->added, 'content'=>$this->content));
+            $row = $query->fetch();
+
+            $this->id = $row['id'];
+
+        }
     }

@@ -15,7 +15,20 @@
     <tr><td> {{reply.content}} </td> </tr>
     </tbody>
 {% endfor %}
+
 </table>
 
+<form action="{{base_path}}/reply" method="post">
+    <div class="form-group">
+        <label> Reply text </label>
+        <input type="text" name="content" placeholder="Write reply here" class="form-control">
+    </div>
+    <input type="hidden" name="usr_id" value="{{user_logged_in.id}}">
+    <input type="hidden" name="topic_id" value="{{topic.id}}">
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>    
+
+</form>
 
 {% endblock %}

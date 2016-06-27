@@ -93,3 +93,7 @@
   });
 
   //REPLIES
+  
+  $routes->post('/reply', function() {
+      RepliesController::create();
+  });
