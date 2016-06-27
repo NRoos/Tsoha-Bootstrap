@@ -6,7 +6,6 @@
             $usr = Usr::find($usr_id);
             return $usr;
         }
-
       return null;
     }
 

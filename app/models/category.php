@@ -67,6 +67,7 @@
         }
 
         public function save() {
+            self::check_user_logged_in();
             $query = DB::connection()->prepare('INSERT INTO Category (name, usr_id, added) VALUES (:name, :usr_id, :added) RETURNING id');
 
             $query->execute(array('name' => $this->name, 'usr_id' => $this->usr_id, 'added' => $this->added));

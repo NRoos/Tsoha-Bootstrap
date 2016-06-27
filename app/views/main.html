@@ -19,7 +19,7 @@
         </tbody>
         {% endfor %}
     </table>
-    {% if(get_user_logged_in) %}
+    {% if(user_logged_in.admin) %}
     <form class="form-group" type="get" action="{{base_path}}/categories/new">
         <button class="btn btn-success"> New Category </button>
     </form>
