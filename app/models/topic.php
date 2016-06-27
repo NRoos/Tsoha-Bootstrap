@@ -56,6 +56,20 @@
             return $topics;
         }
 
+        public function destroy() {
+            $seen = UsrSeenTopic::allForTopic($this->id);
+            $replies = Reply::InTopic($this->id);
+            foreach($seen as $s) {
+                $s->destroyByTopic($this->id);
+            }
+            Kint::dump($replies);
+            foreach($replies as $reply) {
+                $reply->destroy();
+            }
+            $query = DB::connection()->prepare('DELETE FROM topic WHERE id = :id');
+            $query->execute(array('id' => $this->id));
+        }
+
         public function save() {
            $query = DB::connection()->prepare('INSERT INTO topic (name, content, usr_id, category_id, added) VALUES (:name, :content, :usr_id, :category_id, :added) RETURNING id');
            $query->execute(array('name'=> $this->name, 'usr_id' => $this->usr_id, 'category_id' => $this->category_id, 'added' => $this->added, 'content' => $this->content));

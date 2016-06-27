@@ -36,6 +36,8 @@
         }
 
         public function destroy() {
+            UsrSeenTopic::destroyByUsr($this->id); 
+            Reply::destroyAllByUsr($this->id);
             $query = DB::connection()->prepare('DELETE FROM Usr WHERE id = ' . $this->id);
             $query->execute();
         }

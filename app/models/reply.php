@@ -53,4 +53,14 @@
             $this->id = $row['id'];
 
         }
+        public function destroyAllByUsr($usr_id) {
+            $query = DB::connection()->preparE('DELETE FROM REPLY WHERE usr_id = :usr_id');
+            $query->execute(array('usr_id' => $usr_id));
+
+        }
+        public function destroy() {
+            $query = DB::connection()->prepare('DELETE FROM reply WHERE id = :myId');
+            $query->execute(array('myId' => $this->id));
+
+        }
     }

@@ -77,6 +77,12 @@
         }
 
         public function destroy() {
+            $topics = Topic::inCategory($this->id);
+            
+            foreach($topics as $topic) {
+                $topic->destroy();
+            } 
+            
             $query = DB::connection()->prepare('UPDATE Category SET usr_id = 1 WHERE usr_id = :id');
 
             $query->execute(array('id' => $this->id));
